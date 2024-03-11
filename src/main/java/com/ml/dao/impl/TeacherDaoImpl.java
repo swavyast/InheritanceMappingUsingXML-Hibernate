@@ -3,6 +3,7 @@ package com.ml.dao.impl;
 import java.util.Collections;
 import java.util.List;
 
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -159,6 +160,13 @@ public class TeacherDaoImpl implements TeacherDao {
 			tx.begin();
 			@SuppressWarnings("unchecked")
 			List<Teacher> li = session.createCriteria(Teacher.class).list();
+			li.forEach(Teacher::initializeSpecialities);
+			li.forEach(Teacher::initializeClassRooms);
+			/**
+			 * Fetch Mode(with createCriteria()) can be set to JOIN in order to fetch the
+			 * associated tables eagerly like .setFetchMode("specialities", FetchMode.JOIN)
+			 * .setFetchMode("classRoom", FetchMode.JOIN)
+			 */
 			tx.commit();
 			LOG.info("Fetching list of Teacher(s)");
 			return li;

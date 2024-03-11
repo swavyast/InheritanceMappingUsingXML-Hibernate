@@ -58,7 +58,7 @@
         <id name="tid" column="tid" type="string" length="32">
             <generator class="uuid" />
         </id>
-        <list name="specialities" table="specialities">
+        <list name="specialities" table="specialities" fetch="select">
             <key column="tid" />
             <list-index column="spSort" />
             <element column="subject">
@@ -68,7 +68,7 @@
                 </type>
             </element>
         </list>
-        <list name="classRoom" table="class_rooms">
+        <list name="classRoom" table="class_rooms" fetch="select">
             <key column="tid" />
             <list-index column="classIndex" />
             <element column="className" type="string" />

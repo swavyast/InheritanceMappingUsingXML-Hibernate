@@ -145,6 +145,8 @@ public class StaffDaoImpl implements StaffDao {
 			tx = session.beginTransaction();
 			tx.begin();
 			List<Staff> li = session.createCriteria(Staff.class).list();
+			li.forEach(Staff::initializeTeamMembers);
+			li.forEach(Staff::initializeAccessibility);
 			tx.commit();
 			LOG.info("Fetching list of Staff(s)");
 			return li;

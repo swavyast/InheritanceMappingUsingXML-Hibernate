@@ -25,6 +25,13 @@ public class Staff extends Employee {
 		this.canAccess = canAccess;
 	}
 
+	public void initializeTeamMembers() {
+		teamMembers.size(); // This will force the lazy loading of team members within the session
+	}
+	public void initializeAccessibility() {
+		canAccess.size(); // This will force the lazy loading of facilities within the session
+	}
+
 	public String getSid() {
 		return sid;
 	}

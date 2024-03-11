@@ -20,6 +20,14 @@ public class Teacher extends Staff {
 		this.modeOfTeaching = modeOfTeaching;
 	}
 
+	public void initializeSpecialities() {
+		specialities.size();
+	}
+
+	public void initializeClassRooms() {
+		classRoom.size();
+	}
+
 	public String getTid() {
 		return tid;
 	}
